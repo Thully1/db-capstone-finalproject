@@ -1,0 +1,49 @@
+import mysql.connector
+from mysql.connector import MySQLConnection, Error
+from mysql.connector.constants import ClientFlag
+
+# Function to react to data changes
+def react_to_changes():
+    # Connect to the database
+    try:
+        conn = mysql.connector.connect(
+            host="your_host",
+            user="your_username",
+            password="your_password",
+            database="little_lemon",
+            client_flags=[ClientFlag.REMEMBER_OPTIONS]
+        )
+
+        if conn.is_connected():
+            print("Connected to the 'little lemon' database.")
+
+        # Create a cursor object to execute SQL queries
+        cursor = conn.cursor()
+
+        # Continuously monitor for data changes
+        cursor.execute("SELECT * FROM your_table")
+        previous_data = cursor.fetchall()
+
+        while True:
+            cursor.execute("SELECT * FROM your_table")
+            current_data = cursor.fetchall()
+
+            if current_data != previous_data:
+                print("Data has changed!")
+
+                # Perform your desired actions here
+                # ...
+
+            previous_data = current_data
+
+    except Error as e:
+        print("Error connecting to the database:", e)
+
+    finally:
+        if conn.is_connected():
+            cursor.close()
+            conn.close()
+            print("Connection to the database is closed.")
+
+# Call the function to start monitoring for data changes
+react_to_changes()
