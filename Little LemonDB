@@ -1,0 +1,90 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb_littlelemon
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb_littlelemon
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb_littlelemon` DEFAULT CHARACTER SET utf8 ;
+USE `mydb_littlelemon` ;
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`Bookings`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`Bookings` (
+  `idBookings` INT NOT NULL,
+  `Booking date` VARCHAR(45) NOT NULL,
+  `table number` INT NOT NULL,
+  PRIMARY KEY (`idBookings`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`Orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`Orders` (
+  `idOrders` INT NOT NULL,
+  `order date` VARCHAR(45) NOT NULL,
+  `quantity` INT NOT NULL,
+  `total cost` INT NULL,
+  `Orderscol` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idOrders`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`delivery status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`delivery status` (
+  `iddelivery status` INT NOT NULL,
+  `delivery date` VARCHAR(45) NOT NULL,
+  `delivery status` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`iddelivery status`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`Menu`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`Menu` (
+  `idMenu` INT NOT NULL,
+  ` cuisines` VARCHAR(45) NOT NULL,
+  `starters` VARCHAR(45) NOT NULL,
+  `courses` VARCHAR(255) NOT NULL,
+  `drinks` VARCHAR(45) NOT NULL,
+  `desserts` VARCHAR(45) NULL,
+  PRIMARY KEY (`idMenu`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`Customer details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`Customer details` (
+  `idCustomer details` INT NOT NULL,
+  ` customer names` VARCHAR(255) NOT NULL,
+  `contact details` INT NOT NULL,
+  PRIMARY KEY (`idCustomer details`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb_littlelemon`.`Staff information`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb_littlelemon`.`Staff information` (
+  `idStaff information` INT NOT NULL,
+  `Staff  role` VARCHAR(45) NOT NULL,
+  `Staff salary` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idStaff information`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
