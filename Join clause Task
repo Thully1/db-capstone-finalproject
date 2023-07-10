@@ -1,0 +1,16 @@
+SELECT
+    Customers.customer_id,
+    Customers.full_name,
+    Orders.order_id,
+    Orders.cost,
+    Menus.menu_name,
+    MenusItems.course_name,
+    MenusItems.starter_name
+FROM
+    Customers
+JOIN
+    Orders ON Customers.customer_id = Orders.customer_id
+JOIN
+    Menus ON Orders.menu_id = Menus.menu_id
+JOIN
+    MenusItems ON Menus.menu_id = MenusItems.menu_id;
